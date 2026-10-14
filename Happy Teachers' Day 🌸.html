@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Teachers' Day 🌸</title>
+<style>
+:root{--bg:#fdf6f0;--fg:#3a2a2a;--card:#fff;--line:#e8d8d0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1719;--fg:#f6e9e6;--card:#2a2124;--line:#4a3a3e}}
+:root[data-theme="dark"]{--bg:#1d1719;--fg:#f6e9e6;--card:#2a2124;--line:#4a3a3e}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--bg);color:var(--fg);font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}
+.screen{display:none;min-height:100vh;padding:24px 16px 70px;position:relative;z-index:1;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.screen.on{display:flex;animation:fade .7s}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:32px 24px;max-width:420px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,.08)}
+h1{margin:.2em 0;font-size:clamp(1.7rem,6vw,2.4rem)}
+p{line-height:1.6}
+input{width:100%;padding:14px 16px;font-size:1.05rem;border-radius:14px;border:2px solid var(--line);background:var(--bg);color:var(--fg);font-family:inherit;text-align:center;margin:14px 0 10px}
+input:focus{outline:none;border-color:#e58aa5}
+button{font-family:inherit;cursor:pointer;border:0;border-radius:999px;padding:12px 26px;font-size:1rem;color:#fff;background:#d6638a;transition:transform .15s}
+button:hover{transform:scale(1.05)}
+button.ghost{background:transparent;color:#444;border:1.5px solid #444;padding:8px 18px;font-size:.85rem}
+#err{color:#d33;min-height:1.4em;font-size:.9rem;margin:4px 0 10px}
+.names{font-size:.8rem;opacity:.65;margin-top:16px}
+#dash{background:var(--g)}
+#dash .panel{background:rgba(255,255,255,.84);color:#2b2226;border-radius:24px;padding:26px 22px;max-width:560px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,.18)}
+#dash h1{color:var(--a)}
+#dash .tag{letter-spacing:.2em;text-transform:uppercase;font-size:.75rem;color:var(--a)}
+#dash button.main{background:var(--a)}
+.hero svg{width:min(210px,52vw);height:auto;animation:sway 5s ease-in-out infinite;transform-origin:50% 100%}
+.bloom{animation:bloom 1.6s cubic-bezier(.2,1.4,.4,1) both;transform-origin:50px 50px}
+@keyframes bloom{from{transform:scale(0) rotate(-90deg)}to{transform:none}}
+@keyframes sway{50%{transform:rotate(3deg)}}
+.bouq{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:14px 0 6px}
+.bouq button{background:none;padding:2px;width:62px;height:62px;border-radius:50%}
+.bouq svg{width:100%;height:100%}
+#wish{min-height:3.6em;font-style:italic;margin:8px 0 14px}
+.fall{position:fixed;top:-50px;z-index:0;pointer-events:none;animation:drop linear forwards}
+@keyframes drop{to{transform:translateY(112vh) rotate(540deg)}}
+footer{position:fixed;bottom:0;left:0;right:0;text-align:center;font-size:.75rem;padding:10px 8px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(0,0,0,.4);color:#fff;z-index:5;font-family:system-ui,sans-serif}
+.tabs{display:flex;gap:6px;justify-content:center;margin:14px 0;flex-wrap:wrap}
+.tabs button{background:rgba(0,0,0,.08);color:#333;padding:9px 16px;font-size:.9rem}
+.tabs button.on{background:var(--a);color:#fff}
+.pane{display:none}.pane.on{display:block;animation:fade .5s}
+.env{font-size:4rem;cursor:pointer;animation:sway 2s infinite}
+.letter{text-align:left;background:#fffdf5;border:1px solid #e6d9b8;border-radius:10px;padding:18px;line-height:1.7;white-space:pre-wrap;box-shadow:0 4px 14px rgba(0,0,0,.1);margin:10px 0}
+textarea{width:100%;min-height:80px;border-radius:12px;border:2px solid #ddd;padding:10px;font-family:inherit;margin:8px 0;background:#fff;color:#222}
+.games{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+.games button{background:var(--a)}
+.opt{display:block;width:100%;margin:6px 0;background:#fff;color:#333;border:2px solid var(--a);padding:10px}
+.opt.ok{background:#4caf50;color:#fff;border-color:#4caf50}.opt.no{background:#e57373;color:#fff;border-color:#e57373}
+.mem{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:300px;margin:10px auto}
+.mem button{aspect-ratio:1;font-size:1.7rem;padding:0;background:var(--a);border-radius:12px}
+.mem button.f{background:#fff}.mem button.m{background:#c8f7c5}
+</style>
+</head>
+<body>
+
+<section class="screen on" id="login">
+  <div class="card">
+    <div style="font-size:3rem">🌸🍎📚</div>
+    <h1>Happy Teachers' Day!</h1>
+    <p>A little bouquet for our future educators. Type your name to open your own page.</p>
+    <input id="nm" placeholder="Enter your name…" autocomplete="off">
+    <div id="err"></div>
+    <button id="go">Open my greeting 🌷</button>
+    <div class="names">Made with love for future teachers 💐</div>
+  </div>
+</section>
+
+<section class="screen" id="dash">
+  <div class="panel">
+    <div class="tag">Happy Teachers' Day</div>
+    <div class="hero" id="hero"></div>
+    <h1 id="title"></h1>
+    <p id="msg"></p>
+    <div class="tabs"><button class="on" data-t="p1">🌸 Flowers</button><button data-t="p2">💌 Letter</button><button data-t="p3">🎮 Games</button></div><div class="pane on" id="p1"><p style="font-size:.85rem;opacity:.7;margin:0">Tap a flower for a wish 👇</p>
+    <div class="bouq" id="bouq"></div>
+    <div id="wish"></div>
+    <button class="main" id="rain">Shower me with flowers 🌸</button></div>
+<div class="pane" id="p2"><div class="env" id="env">💌</div><p id="eh">Tap the envelope to open your letter</p><div class="letter" id="let" hidden></div>
+<button class="main" id="mk" hidden>💛 One more encouragement</button><div class="letter" id="card" hidden style="text-align:center"></div></div>
+<div class="pane" id="p3"><div class="games"><button data-g="flap">🐦 Flappy Teacher</button><button data-g="arch">🏹 Archery</button><button data-g="dino">🦖 Dino Run</button><button data-g="mem">🃏 Memory Match</button><button data-g="spin">🎲 Icebreaker Spin</button><button data-g="quiz">🧠 Teacher Quiz</button></div><div id="gb"></div></div>
+    <button class="ghost" id="back" style="margin-left:6px">Not me</button>
+  </div>
+</section>
+
+<footer>© 2026 Raven Villarante. All Rights Reserved.</footer>
+
+<script>
+const P=[
+{k:"jay lloyd",n:"Jay Lloyd",a:"#b07800",g:"linear-gradient(160deg,#fff3c4,#9fd3ff)",p:"#ffc928",c:"#6b3e12",pt:12,e:["🌻","🌼","☀️"],f:"Georgia,serif",t:"Sunshine for a future great teacher"},
+{k:"hara",n:"Hara",a:"#c2306b",g:"linear-gradient(160deg,#ffd9e6,#ffb3cf)",p:"#f06292",c:"#ffd54f",pt:8,e:["🌹","🌸","💗"],f:"'Palatino Linotype',serif",t:"Roses for a teacher with a big heart"},
+{k:"kissarain",n:"Kissarain",a:"#6f42c1",g:"linear-gradient(160deg,#e9dcff,#c9b3ff)",p:"#9b6dff",c:"#fff176",pt:10,e:["🪻","🌸","💜"],f:"'Trebuchet MS',sans-serif",t:"Lavender blooms for a gentle, bright mind"},
+{k:"ladylee",n:"Ladylee",a:"#0f8b7e",g:"linear-gradient(160deg,#d3fff3,#8fe3d0)",p:"#26c6a8",c:"#fff59d",pt:9,e:["🌼","🌿","🍀"],f:"'Gill Sans','Segoe UI',sans-serif",t:"Fresh flowers for a growing educator"},
+{k:"daisy",n:"Daisy",a:"#a97800",g:"linear-gradient(160deg,#fffde0,#ffffff 50%,#ffe9a8)",p:"#ffffff",c:"#ffc107",pt:16,e:["🌼","🌼","🌼"],f:"'Comic Sans MS','Chalkboard SE',cursive",t:"A daisy for our Daisy"},
+{k:"ainsley phoebe",n:"Ainsley Phoebe",a:"#d9531e",g:"linear-gradient(160deg,#ffe3d1,#ffb59a)",p:"#ff8a65",c:"#ffe082",pt:7,e:["🌺","🌷","🧡"],f:"'Brush Script MT','Segoe Script',cursive",t:"Blossoms for a teacher with a bright spirit"},
+{k:"christian",n:"Christian",a:"#2e7d32",g:"linear-gradient(160deg,#dff5d0,#a9d98a)",p:"#ffd54f",c:"#5d3a1a",pt:14,e:["🌻","🍃","🌿"],f:"'Courier New',monospace",t:"Sunflowers for a strong, steady learner"},
+{k:"rachell",n:"Rachell",a:"#b71c1c",g:"linear-gradient(160deg,#ffdada,#f7a1a1)",p:"#e53935",c:"#ffeb3b",pt:6,e:["🌹","❤️","🌷"],f:"Garamond,Georgia,serif",t:"Red roses for a passionate future teacher"},
+{k:"lorence",n:"Lorence",a:"#3949ab",g:"linear-gradient(160deg,#dde3ff,#aab6f7)",p:"#7986cb",c:"#ffd54f",pt:11,e:["🪷","💙","🌸"],f:"Verdana,sans-serif",t:"Lotus blooms for a calm and wise guide"}
+];
+const MSG=n=>`Dear ${n}, thank you for choosing a path of teaching, patience and kindness. The classrooms of tomorrow are lucky to have you. Happy Teachers' Day!`;
+const WISH=[
+"May your classroom always be full of curious minds.",
+"May every lesson you teach plant a seed that grows for life.",
+"May you never run out of patience, chalk, or coffee.",
+"May your students remember you as the teacher who believed in them.",
+"Keep going. Every great teacher started as a student, just like you."
+];
+const $=id=>document.getElementById(id);
+const norm=s=>s.toLowerCase().replace(/[^a-z ]/g,"").replace(/\s+/g," ").trim();
+function find(s){s=norm(s);if(s.length<3)return null;
+ return P.find(x=>x.k===s)||P.find(x=>x.k.startsWith(s))||P.find(x=>x.k.split(" ")[0]===s.split(" ")[0])||null}
+function flower(p,c,n,stem){let pe="";const rx=Math.max(5,Math.min(13,150/n/1.6));
+ for(let i=0;i<n;i++)pe+=`<ellipse cx="50" cy="26" rx="${rx}" ry="22" fill="${p}" stroke="rgba(0,0,0,.15)" transform="rotate(${i*360/n} 50 50)"/>`;
+ const st=stem?`<path d="M50 74 Q46 105 50 135" stroke="#4c9a3f" stroke-width="5" fill="none"/><path d="M49 112 Q30 100 22 108 Q34 120 49 112Z" fill="#5db84e"/><path d="M51 100 Q70 88 78 96 Q66 108 51 100Z" fill="#5db84e"/>`:"";
+ return `<svg viewBox="0 0 100 ${stem?140:100}">${st}<g class="bloom">${pe}<circle cx="50" cy="50" r="12" fill="${c}"/></g></svg>`}
+function rain(p,n){for(let i=0;i<n;i++){const s=document.createElement("span");s.className="fall";
+ s.textContent=p.e[Math.floor(Math.random()*p.e.length)];
+ s.style.left=Math.random()*100+"vw";s.style.fontSize=14+Math.random()*24+"px";
+ s.style.animationDuration=4+Math.random()*5+"s";s.style.animationDelay=Math.random()*2+"s";
+ document.body.appendChild(s);setTimeout(()=>s.remove(),11000)}}
+let cur=null,tm=null;
+function show(p){cur=p;const d=$("dash");
+ d.style.setProperty("--g",p.g);d.style.setProperty("--a",p.a);d.style.fontFamily=p.f;
+ $("hero").innerHTML=flower(p.p,p.c,p.pt,true);
+ $("title").textContent=`Happy Teachers' Day, ${p.n}!`;
+ $("msg").textContent=p.t+". "+MSG(p.n);
+ const cols=[p.p,p.a,"#ffffff",p.c,p.p];
+ $("bouq").innerHTML="";
+ cols.forEach((col,i)=>{const b=document.createElement("button");b.innerHTML=flower(col,i%2?p.p:p.c,p.pt-(i%3),false);
+  b.onclick=()=>{$("wish").textContent=WISH[i];rain(p,12)};$("bouq").appendChild(b)});
+ $("wish").textContent="";
+ $("login").classList.remove("on");d.classList.add("on");
+ rain(p,45);clearInterval(tm);tm=setInterval(()=>rain(p,6),3500);reset()}
+function enter(){const p=find($("nm").value);
+ if(!p){$("err").textContent="Hmm, I can't find that name. Try your name as written on the invite 🌼";return}
+ $("err").textContent="";show(p)}
+let raf,gstop=null;
+function stopG(){cancelAnimationFrame(raf);if(gstop)gstop();gstop=null}
+function cv(title,hint){$('gb').innerHTML=`<h3>${title}</h3><div id="sc2">Score: 0</div><canvas id="cv" width="320" height="400" style="width:100%;max-width:340px;border-radius:14px;touch-action:none;background:#bfe8ff;display:block;margin:8px auto"></canvas><p style="font-size:.85rem;opacity:.7">${hint}</p>`;const c=$('cv').getContext('2d');c.textAlign='center';c.textBaseline='bottom';return c}
+function over(s,m){$('sc2').textContent=m+' Score: '+s}
+function flap(){stopG();const x=cv('🐦 Flappy Teacher','Tap or press Space to flap through the gaps'),W=320,H=400;x.textBaseline='middle';let y=180,v=0,p=[],t=0,s=0,dead=false,go=false;
+ const jump=()=>{if(dead){flap();return}go=true;v=-6.2};
+ const kd=e=>{if(e.code==='Space'){e.preventDefault();jump()}};
+ $('cv').onpointerdown=jump;addEventListener('keydown',kd);gstop=()=>removeEventListener('keydown',kd);
+ const loop=()=>{x.clearRect(0,0,W,H);
+  if(go&&!dead){v+=.35;y+=v;if(++t%90===1)p.push({x:W,g:90+Math.random()*140});
+   p.forEach(o=>o.x-=2.4);if(p.length&&p[0].x<-50)p.shift();
+   p.forEach(o=>{if(!o.d&&o.x+44<70){o.d=1;s++;$('sc2').textContent='Score: '+s;if(s===10)rain(cur,30)}
+    if(84>o.x&&56<o.x+44&&(y-14<o.g||y+14>o.g+110))dead=true});
+   if(y>H-14||y<0)dead=true;if(dead)over(s,'💥 Game over! Tap to retry.')}
+  x.fillStyle=cur.a;p.forEach(o=>{x.fillRect(o.x,0,44,o.g);x.fillRect(o.x,o.g+110,44,H)});
+  x.font='28px serif';x.save();x.translate(140,0);x.scale(-1,1);x.fillText('🐦',70,y);x.restore();
+  if(!go){x.fillStyle='#333';x.font='16px sans-serif';x.fillText('Tap to start',W/2,H/2+60)}
+  raf=requestAnimationFrame(loop)};loop()}
+function dino(){stopG();const x=cv('🦖 Dino Run','Tap or press Space to jump over the books'),W=320,H=400,G=330;let y=G,v=0,o=[],t=0,s=0,dead=false,go=false;
+ const jump=()=>{if(dead){dino();return}go=true;if(y>=G)v=-11};
+ const kd=e=>{if(e.code==='Space'||e.code==='ArrowUp'){e.preventDefault();jump()}};
+ $('cv').onpointerdown=jump;addEventListener('keydown',kd);gstop=()=>removeEventListener('keydown',kd);
+ const loop=()=>{x.clearRect(0,0,W,H);
+  if(go&&!dead){v+=.6;y=Math.min(G,y+v);if(y>=G)v=0;t++;s=t>>3;const sp=4+s/40,l=o[o.length-1];
+   if(!l||l.x<W-l.g)o.push({x:W+20,g:170+Math.random()*130});
+   o.forEach(b=>b.x-=sp);if(o[0]&&o[0].x<-30)o.shift();
+   if(o.some(b=>Math.abs(b.x-40)<26&&y>G-26))dead=true;
+   $('sc2').textContent='Score: '+s;if(dead)over(s,'💥 Game over! Tap to retry.')}
+  x.fillStyle='#8bc34a';x.fillRect(0,G+16,W,H);
+  x.font='34px serif';x.save();x.translate(80,0);x.scale(-1,1);x.fillText('🦖',40,y+16);x.restore();o.forEach(b=>x.fillText('📚',b.x,G+16));
+  if(!go){x.fillStyle='#333';x.font='16px sans-serif';x.fillText('Tap to start',W/2,150)}
+  raf=requestAnimationFrame(loop)};loop()}
+function arch(){stopG();const x=cv('🏹 Archery','Tap where you want to shoot. Lead the moving target! 8 arrows'),W=320,H=400;let tx=160,td=2,ar=null,n=8,s=0,msg='';
+ $('sc2').textContent='Score: 0 | Arrows: 8';
+ $('cv').onpointerdown=e=>{if(n<=0&&!ar){arch();return}if(ar||n<=0)return;const r=$('cv').getBoundingClientRect();ar={x:(e.clientX-r.left)*W/r.width,y:H-50};n--};
+ const loop=()=>{x.clearRect(0,0,W,H);tx+=td*(1+s/50);if(tx>W-40||tx<40)td=-td;
+  if(ar){ar.y-=10;if(ar.y<=100){const d=Math.abs(ar.x-tx),p=d<12?10:d<24?7:d<36?4:0;s+=p;msg=p?'🎯 +'+p:'Missed!';if(p===10)rain(cur,10);ar=null;$('sc2').textContent=n>0?`Score: ${s} | Arrows: ${n}`:`🏆 Final: ${s}/80. Tap to play again.`}}
+  [[36,'#fff'],[24,'#e53935'],[12,'#ffd600']].forEach(([r,c])=>{x.fillStyle=c;x.beginPath();x.arc(tx,100,r,0,7);x.fill()});
+  x.fillStyle='#7cb342';x.fillRect(0,H-30,W,30);
+  if(ar){x.strokeStyle='#5d4037';x.lineWidth=3;x.beginPath();x.moveTo(ar.x,ar.y);x.lineTo(ar.x,ar.y+28);x.stroke()}
+  x.font='34px serif';x.fillText('🏹',W/2,H-4);x.fillStyle='#333';x.font='18px sans-serif';x.fillText(msg,W/2,200);
+  raf=requestAnimationFrame(loop)};loop()}
+const FROM="your friend";
+function tab(id){if(id!=='p3')stopG();document.querySelectorAll(".pane").forEach(x=>x.classList.toggle("on",x.id===id));document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("on",b.dataset.t===id))}
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>tab(b.dataset.t));
+let tw;
+function reset(){tab("p1");clearInterval(tw);$("let").hidden=true;$("card").hidden=true;$("mk").hidden=true;$("env").textContent="💌";$("eh").textContent="Tap the envelope to open your letter";$("gb").innerHTML=""}
+$("env").onclick=()=>{if(!cur)return;const L=$("let");L.hidden=false;$("eh").textContent="";$("env").textContent="📨";$("mk").hidden=false;
+ const T=`Dear ${cur.n},\n\nHappy Teachers' Day! 🌸\n\nThis path isn't easy. There will be sleepless nights, heavy readings, lesson plans that fall apart, and days you wonder if you're cut out for it.\n\nYou are. Every hard day now is you building the patience, creativity and heart your future students will need. Nobody becomes a great teacher overnight, and you don't have to be perfect. You only have to keep showing up and keep learning.\n\nWhen you feel tired, rest, but don't quit. When you doubt yourself, remember why you started. ${cur.t}.\n\nOne day a student will tell you that you were the reason they didn't give up. Keep going. You are already becoming that teacher, and I'm proud of you.\n\nWith love,\n${FROM}`;
+ clearInterval(tw);let i=0;L.textContent="";tw=setInterval(()=>{i+=2;L.textContent=T.slice(0,i);if(i>=T.length)clearInterval(tw)},16);rain(cur,20)};
+const EN=["You are doing better than you think.","Small steps still move you forward.","Your future students are already lucky to have you.","Tired is not the same as done. Rest, then rise.","Mistakes are just lessons you're learning to teach.","The world needs your patience and your heart."];
+$("mk").onclick=()=>{const c=$("card");c.hidden=false;c.style.borderColor=cur.a;c.textContent="💛 "+EN[Math.floor(Math.random()*EN.length)]};
+const Q=[["Who developed the Zone of Proximal Development?",["Vygotsky","Skinner","Pavlov"],0],["Piaget's stage for roughly ages 7 to 11?",["Sensorimotor","Concrete operational","Formal operational"],1],["Highest level in the revised Bloom's Taxonomy?",["Evaluate","Apply","Create"],2],["Who is called the 'Father of Kindergarten'?",["Dewey","Montessori","Froebel"],2],["World Teachers' Day is celebrated every year on…",["March 8","October 5","June 12"],1]];
+function quiz(i=0,s=0){const g=$("gb");if(i>=Q.length){g.innerHTML=`<h3>Score: ${s}/${Q.length} ${s>=4?"🏆":"🌟"}</h3><button class="main" onclick="quiz()">Play again</button>`;if(s>=4)rain(cur,40);return}
+ const [q,o,a]=Q[i];g.innerHTML=`<h3>${q}</h3>`+o.map((t,j)=>`<button class="opt" data-j="${j}">${t}</button>`).join("");
+ const bs=g.querySelectorAll(".opt");bs.forEach(b=>b.onclick=()=>{const ok=+b.dataset.j===a;b.classList.add(ok?"ok":"no");bs[a].classList.add("ok");bs.forEach(x=>x.disabled=true);setTimeout(()=>quiz(i+1,s+(ok?1:0)),900)})}
+const IB=["What made you choose education as a course?","Describe a teacher who changed your life.","What would you do on your very first day as a teacher?","Would you rather teach kindergarten or college?","What's your funniest school memory?","What subject would you love to teach, and why?","What teaching superpower would you want?","What's the best advice a teacher ever gave you?","Describe your dream classroom in three words.","What's one thing you want your future students to remember you for?"];
+function spin(){const g=$("gb");g.innerHTML=`<h3>🎲 Icebreaker Spin</h3><div class="letter" id="sp" style="text-align:center">Ready?</div><button class="main" id="sb">Spin!</button>`;
+ $("sb").onclick=()=>{let n=0;const t=setInterval(()=>{$("sp").textContent=IB[Math.floor(Math.random()*IB.length)];if(++n>12){clearInterval(t);$("sp").textContent="👉 "+$("sp").textContent+"\n\nAnswer it, then challenge a friend to answer too!"}},90)}}
+function mem(){const g=$("gb"),E=["📚","✏️","🍎","🎒","🔔","🧮"],d=[...E,...E].sort(()=>Math.random()-.5);let a=null,m=0,f=0,lock=false;
+ g.innerHTML=`<h3>🃏 Memory Match</h3><div id="mv">Moves: 0</div><div class="mem" id="mm"></div>`;
+ d.forEach((e,i)=>{const b=document.createElement("button");b.textContent="❓";b.onclick=()=>{if(lock||b.classList.contains("f")||b.classList.contains("m"))return;b.textContent=e;b.classList.add("f");
+  if(a===null){a=i;return}m++;$("mv").textContent="Moves: "+m;const c=a,p=$("mm").children[c];a=null;
+  if(d[c]===e){p.className=b.className="m";if(++f===6){$("mv").textContent=`Done in ${m} moves! 🎉`;rain(cur,40)}}
+  else{lock=true;setTimeout(()=>{[p,b].forEach(x=>{x.className="";x.textContent="❓"});lock=false},700)}};$("mm").appendChild(b)})}
+const W=["LESSON","STUDENT","CHALK","PRINCIPAL","CLASSROOM","HOMEWORK","TEACHER","CURRICULUM"];
+function scr(){const g=$("gb"),w=W[Math.floor(Math.random()*W.length)];let s=w;while(s===w)s=[...w].sort(()=>Math.random()-.5).join("");
+ g.innerHTML=`<h3>🔤 Unscramble it!</h3><div style="font-size:1.8rem;letter-spacing:.25em">${s}</div><input id="sa" placeholder="Your answer" style="background:#fff;color:#222"><div id="sr"></div><button class="main" id="sc">Check</button> <button class="ghost" onclick="scr()">New word</button>`;
+ $("sc").onclick=()=>{const ok=$("sa").value.trim().toUpperCase()===w;$("sr").textContent=ok?"✅ Correct! 🌸":"❌ Try again!";if(ok)rain(cur,25)}}
+document.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{stopG();({flap,arch,dino,mem,spin,quiz,scr})[b.dataset.g]()});
+$("go").onclick=enter;
+$("nm").addEventListener("keydown",e=>{if(e.key==="Enter")enter()});
+$("rain").onclick=()=>rain(cur,60);
+$("back").onclick=()=>{clearInterval(tm);$("dash").classList.remove("on");$("login").classList.add("on");$("nm").value=""};
+</script>
+</body>
+</html>
